@@ -10,24 +10,6 @@
         <result column="userAge" property="userAge" />
         <result column="userAddress" property="userAddress" />
     </resultMap>
-    <!-- User 联合文章进行查询 方法之一的配置 (多对一的方式)  -->
-    <resultMap id="resultUserArticleList" type="Article">
-        <id property="id" column="aid" />
-        <result property="title" column="title" />
-        <result property="content" column="content" />
-
-        <association property="user" javaType="User">
-            <id property="id" column="id" />
-            <result property="userName" column="userName" />
-            <result property="userAddress" column="userAddress" />
-        </association>
-    </resultMap>
-
-    <select id="getUserArticles" parameterType="int" resultMap="resultUserArticleList">
-        select user.id,user.userName,user.userAddress,article.id aid,article.title,article.content from user,article
-        where user.id=article.userid and user.id=#{id}
-    </select>
-
     <select id="selectUserByID" parameterType="int" resultType="User">
         select * from `user` where id = #{id}
     </select>
@@ -36,6 +18,15 @@
         select * from user where userName like #{userName}
     </select>
 
+    <!--执行增加操作的SQL语句。id和parameterType
+       分别与IUserOperation接口中的addUser方法的名字和
+       参数类型一致。以#{name}的形式引用Student参数
+       的name属性，MyBatis将使用反射读取Student参数
+       的此属性。#{name}中name大小写敏感。引用其他
+       的gender等属性与此一致。seGeneratedKeys设置
+       为"true"表明要MyBatis获取由数据库自动生成的主
+       键；keyProperty="id"指定把获取到的主键值注入
+       到Student的id属性-->
     <insert id="addUser" parameterType="User"
             useGeneratedKeys="true" keyProperty="id">
         insert into user(userName,userAge,userAddress)
@@ -50,5 +41,4 @@
     <delete id="deleteUser" parameterType="int">
         delete from user where id=#{id}
     </delete>
-
 </mapper>

@@ -10,4 +10,12 @@ import java.util.List;
 public interface IUserOperation {
 
     public List<User> selectUsers(String userName);
+
+    User selectUserByID(int i);
+
+    void updateUser(User user);
+
+    void deleteUser(int id);
+
+    void addUser(User user);
 }
