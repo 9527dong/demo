@@ -1,5 +1,6 @@
 package com.yihaomen.mybatis.inter;
 
+import com.yihaomen.mybatis.model.Article;
 import com.yihaomen.mybatis.model.User;
 
 import java.util.List;
@@ -11,11 +12,13 @@ public interface IUserOperation {
 
     public List<User> selectUsers(String userName);
 
-    User selectUserByID(int i);
+    public User selectUserByID(int i);
 
-    void updateUser(User user);
+    public void updateUser(User user);
 
-    void deleteUser(int id);
+    public void deleteUser(int id);
 
-    void addUser(User user);
+    public void addUser(User user);
+
+    public List<Article> getUserArticles(int id);
 }

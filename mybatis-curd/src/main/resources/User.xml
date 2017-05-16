@@ -23,6 +23,14 @@
         </association>
     </resultMap>
 
+    <!-- User 联合文章进行查询 方法之二的配置 (多对一的方式) -->
+    <resultMap id="resultUserArticleList-2" type="Article">
+        <id property="id" column="aid" />
+        <result property="title" column="title" />
+        <result property="content" column="content" />
+        <association property="user" javaType="User" resultMap="resultListUser" />
+    </resultMap>
+
     <select id="getUserArticles" parameterType="int" resultMap="resultUserArticleList">
         select user.id,user.userName,user.userAddress,article.id aid,article.title,article.content from user,article
         where user.id=article.userid and user.id=#{id}
