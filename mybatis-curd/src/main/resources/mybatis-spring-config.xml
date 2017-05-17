@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--  Configuration.xml 是 mybatis 用来建立 sessionFactory 用的，里面主要包含了数据库连接相关东西，还有 java 类所对应的别名 -->
+<configuration>
+    <!--  具体的类的映射中，比如 User.xml 中 resultType 就是对应这里的 -->
+    <typeAliases>
+        <typeAlias alias="User" type="com.yihaomen.mybatis.model.User"/>
+        <typeAlias alias="Article" type="com.yihaomen.mybatis.model.Article"/>
+    </typeAliases>
+
+    <!-- 包含要映射的类的 xml 配置文件 -->
+    <mappers>
+        <mapper resource="User.xml"/>
+    </mappers>
+</configuration>
