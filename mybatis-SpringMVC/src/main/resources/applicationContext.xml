@@ -20,7 +20,7 @@
         <property name="mapperLocations" value="classpath*:mapper/*.xml" />
     </bean>
 
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer" id="userMapper">
         <property name="basePackage" value="com.yihaomen.inter" />
     </bean>
 </beans>
