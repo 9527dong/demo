@@ -19,12 +19,13 @@ import com.yihaomen.util.PageInfo;
 @RequestMapping("/article")
 public class UserController {
 	@Autowired
-	IUserOperation iUserOperation;
+	private
+	IUserOperation userMapper;
 
 	
 	@RequestMapping("/list")
 	public ModelAndView listall(HttpServletRequest request,HttpServletResponse response){
-		List<Article> articles=iUserOperation.getUserArticles(1); 
+		List<Article> articles=userMapper.getUserArticles(1); 
 		//制定视图，也就是list.jsp
 		ModelAndView mav=new ModelAndView("list");
 		mav.addObject("articles",articles);
@@ -33,7 +34,7 @@ public class UserController {
 	
 	@RequestMapping("/search")
 	public ModelAndView search(HttpServletRequest request,HttpServletResponse response){
-		List<Article> articles=iUserOperation.getUserArticles(1); 
+		List<Article> articles=userMapper.getUserArticles(1); 
 		//制定视图，也就是list.jsp
 		ModelAndView mav=new ModelAndView("search");		
 		return mav;
@@ -54,7 +55,7 @@ public class UserController {
 		PageInfo page = new PageInfo();
 		page.setShowCount(pageSize);
 		page.setCurrentResult(currentResult);
-		List<Article> articles=iUserOperation.selectArticleListPage(page,1);
+		List<Article> articles=userMapper.selectArticleListPage(page,1);
 		
 		System.out.println(page);
 		
