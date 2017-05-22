@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yihaomen.inter.IUserOperation">
+
+	<select id="selectUserByID" parameterType="int" resultType="User">
+	    select * from `user` where id = #{id}
+	</select>
+	
+	<!-- 为了返回list 类型而定义的returnMap -->
+	<resultMap type="User" id="resultListUser">
+        <id column="id" property="id" />
+        <result column="userName" property="userName" />
+        <result column="userAge" property="userAge" />
+        <result column="userAddress" property="userAddress" />
+    </resultMap>
+	
+	<!-- 返回list 的select 语句，注意 resultMap 的值是指向前面定义好的 -->
+	<select id="selectUsers" parameterType="string" resultMap="resultListUser">
+	    select * from user where userName like #{userName}
+	</select>
+	
+	<!-- User 联合文章进行查询 方法之一的配置 (多对一的方式)  -->	
+	<resultMap id="resultUserArticleList" type="Article">
+	    <id property="id" column="aid" />
+	    <result property="title" column="title" />
+	    <result property="content" column="content" />
+	    
+	    <association property="user" javaType="User">
+	        <id property="id" column="id" />
+	        <result property="userName" column="userName" />
+	        <result property="userAddress" column="userAddress" />	        
+	    </association>	    
+	</resultMap>
+	
+	<!-- User 联合文章进行查询 方法之二的配置 (多对一的方式) -->	
+	<resultMap id="resultUserArticleList-2" type="Article">
+	    <id property="id" column="aid" />
+	    <result property="title" column="title" />
+	    <result property="content" column="content" />	    
+	    <association property="user" javaType="User" resultMap="resultListUser" />	         
+	</resultMap>
+	
+	<select id="getUserArticles" parameterType="int" resultMap="resultUserArticleList">
+	   select user.id,user.userName,user.userAddress,article.id aid,article.title,article.content from user,article 
+	          where user.id=article.userid and user.id=#{id}
+	</select>
+	
+	
+    <insert id="addUser" parameterType="User" 
+        useGeneratedKeys="true" keyProperty="id"> 
+        insert into user(userName,userAge,userAddress)  
+             values(#{userName},#{userAge},#{userAddress})  
+    </insert>
+    
+    <update id="updateUser" parameterType="User" >
+        update user set userName=#{userName},userAge=#{userAge},userAddress=#{userAddress} where id=#{id}
+    </update>
+    
+    <delete id="deleteUser" parameterType="int">
+        delete from user where id=#{id}
+    </delete>
+    
+    <!-- 分页查询测试 -->
+    <select id="selectArticleListPage" resultMap="resultUserArticleList">
+        select user.id,user.userName,user.userAddress,article.id aid,article.title,article.content from user,article 
+	          where user.id=article.userid and user.id=#{userid}
+    </select>
+    
+   
+</mapper>
