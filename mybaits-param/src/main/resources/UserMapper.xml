@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--  User.xml 文件里面 主要是定义各种 SQL 语句，以及这些语句的参数，以及要返回的类型等 -->
+<mapper namespace="com.mybatis.inter.IUserOperation">
+    <select id="selectUserByID" parameterType="int" resultType="com.mybatis.model.User">
+        select * from `user` where id = #{any}
+    </select>
+    <select id="selectUserByIdAndUserName"  resultType="com.mybatis.model.User">
+        select * from `user` where id = #{param1} and userName = #{1}
+    </select>
+    <select id="selectUserByIdAndUserNameByAnnotation"  resultType="com.mybatis.model.User">
+        select * from `user` where id = #{id} and userName = #{userName}
+    </select>
+    <select id="selectUserByMap"  resultType="com.mybatis.model.User">
+        select * from `user` where id = #{id} and userName = #{userName}
+    </select>
+    <select id="selectUserByPojo"  resultType="com.mybatis.model.User" parameterType="com.mybatis.model.User">
+        select * from `user` where id = #{id} and userName = #{userName}
+    </select>
+    <!--<insert id="addUser" parameterType="com.mybatis.model.User"-->
+            <!--useGeneratedKeys="true" keyProperty="id">-->
+        <!--insert into `user`(userName,userAge,userAddress)-->
+        <!--values(#{userName},#{userAge},#{userAddress})-->
+    <!--</insert>-->
+</mapper>
