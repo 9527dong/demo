@@ -21,6 +21,7 @@ public class mybatisTest {
     @BeforeClass
     public static void init(){
         try{
+            // 、根据 全局配置文件， 利用SqlSessionFactoryBuilder 创建SqlSessionFactory
             reader    = Resources.getResourceAsReader("Configuration.xml");
             sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
         }catch(Exception e){
@@ -31,11 +32,15 @@ public class mybatisTest {
         return sqlSessionFactory;
     }
 
+    /**
+     * 1. mybatis的HelloWorld
+     */
     @Test
-    public void test1(){
+    public void test(){
+        //使用 SqlSessionFactory 获取 sqlSession 对象。一 个 SqlSession 对象代表和数据库的一次会话
         SqlSession session = sqlSessionFactory.openSession();
         try {
-            User user = (User) session.selectOne("com.yihaomen.mybatis.inter.IUserOperation.selectUserByID", 1);
+            User user = (User) session.selectOne("helloworld.selectUserByID", 1);
             assertEquals("shanghai,pudong", user.getUserAddress());
             assertEquals("summer", user.getUserName());
         } finally {
@@ -44,11 +49,11 @@ public class mybatisTest {
     }
 
     /**
-     * 接口式编程
+     * 2. 接口式编程
      * IUserOperation 接口没有实现类，但是mybatis会为这个接口自动生成一个代理对象
      */
     @Test
-    public void test2(){
+    public void testInterface(){
         SqlSession session = sqlSessionFactory.openSession();
         try {
             IUserOperation userOperation=session.getMapper(IUserOperation.class);

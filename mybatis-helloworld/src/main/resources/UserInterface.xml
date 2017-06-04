@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--  User.xml 文件里面 主要是定义各种 SQL 语句，以及这些语句的参数，以及要返回的类型等 -->
-<mapper namespace="helloworld">
+<mapper namespace="com.yihaomen.mybatis.inter.IUserOperation">
     <select id="selectUserByID" parameterType="int" resultType="com.yihaomen.mybatis.model.User">
         select * from `user` where id = #{id}
     </select>

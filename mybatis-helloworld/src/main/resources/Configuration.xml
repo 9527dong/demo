@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
-<!--  Configuration.xml 是 mybatis 用来建立 sessionFactory 用的，里面主要包含了数据库连接相关东西，还有 java 类所对应的别名 -->
+<!--  Configuration.xml 是 mybatis 用来建立 sessionFactory 用的，里面主要包含了数据库连接相关东西 -->
 <configuration>
 
     <!-- 数据库配置信息，本数据库使用的是h2-->
@@ -20,5 +20,6 @@
     <!-- 包含要映射的类的 xml 配置文件 -->
     <mappers>
         <mapper resource="User.xml"/>
+        <mapper resource="UserInterface.xml"/>
     </mappers>
 </configuration>
