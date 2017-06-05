@@ -18,9 +18,7 @@
     <select id="selectUserByPojo"  resultType="com.mybatis.model.User" parameterType="com.mybatis.model.User">
         select * from `user` where id = #{id} and userName = #{userName}
     </select>
-    <!--<insert id="addUser" parameterType="com.mybatis.model.User"-->
-            <!--useGeneratedKeys="true" keyProperty="id">-->
-        <!--insert into `user`(userName,userAge,userAddress)-->
-        <!--values(#{userName},#{userAge},#{userAddress})-->
-    <!--</insert>-->
+    <select id="selectUserByMap2"  resultType="com.mybatis.model.User">
+        select * from ${table} where id = ${id} and userName = #{userName}
+    </select>
 </mapper>

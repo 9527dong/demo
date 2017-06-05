@@ -18,4 +18,6 @@ public interface IUserOperation {
     public User selectUserByMap(Map<String, Object> map);
 
     public User selectUserByPojo(User user);
+
+    public User selectUserByMap2(Map<String, Object> map);
 }

@@ -115,4 +115,23 @@ public class mybatisTest {
             session.close();
         }
     }
+    /**
+     * 6. $和#的区别：分别使用#和￥来接收传递过来的参数
+     */
+    @Test
+    public void testManyParamByMap2(){
+        SqlSession session = sqlSessionFactory.openSession();
+        try {
+            IUserOperation userOperation=session.getMapper(IUserOperation.class);
+            Map map = new HashMap();
+            map.put("table", "user");
+            map.put("id", 1);
+            map.put("userName", "summer");
+            User user = userOperation.selectUserByMap2(map);
+            assertEquals("shanghai,pudong", user.getUserAddress());
+            assertEquals("summer", user.getUserName());
+        } finally {
+            session.close();
+        }
+    }
 }
