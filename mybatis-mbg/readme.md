@@ -84,3 +84,11 @@ xml.mapper.package=com.mybatis.mapper
 通过点击`Maven Project`窗口中的
 
 ![mark](https://github.com/9527dong/demo/raw/master/mybatis-mbg/src/main/resources/img/maven_run.png)
+
+即可逆向生成代码文件
+
+## 五、参考资料
+
+中文参考：http://mbg.cndocs.tk/index.html
+
+英文官网：http://www.mybatis.org/generator/index.html
