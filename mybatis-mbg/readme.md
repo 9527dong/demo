@@ -1,5 +1,7 @@
 `mybatis-generator(mbp)`是一个数据库逆向到代码的工具，`mybatis-generator`有三种用法：命令行、eclipse插件、maven插件。本项目介绍的是第三种通过 maven 插件实现数据库逆向。
+
 对于 `dao`、`mapper`、`model` 全部可以自动生成十分方便。下面说一下基本配置。
+
 ## 一、利用maven引入mybatis-generator-maven 插件
 只需要在maven工程的pom.xml配置 mybatis-generator-maven 插件即可.
 ```xml
@@ -39,7 +41,8 @@
 ```
 ## 二、添加generatorConfig.xml 文件
 按照maven项目的约定规则，将 `generatorConfig.xml` 放到 `rescores` 文件夹中。
-`generatorConfig.xml`中需要配置一下信息
+
+`generatorConfig.xml`中需要配置的信息：
 
 1. 数据库驱动
 2. 数据库链接URL，用户名、密码
@@ -50,11 +53,12 @@
 
 ## 三、添加init.properties文件
 这里的名字是自己定义的，此文件作为参数配置文件，给`generatorConfig.xml`文件提供动态参数。
+
 在generatorConfig.xml通过配置properties 属性引入:
 ```xml
 <properties resource="init.properties"/>
 ```
-引入后`generatorConfig.xml`可以通过`${key}`的方式动态参数加载配置
+引入后`generatorConfig.xml`可以通过`${key}`的方式动态参数加载配置。
 
 对于init.properties 的配置十分简单易懂，主要注意需要配置数据库驱动就可以了。
 ```properties
@@ -76,5 +80,7 @@ xml.mapper.package=com.mybatis.mapper
 ```
 ## 四、运行插件生成反向文件
 这里需要通过maven命令来运行插件，运行方式有多种，可以通过maven命令行来运行，也可以通过`idea`等工具来运行maven命令。
+
 通过点击`Maven Project`窗口中的
+
 ![mark](./src/resources/img/maven_run.png)
