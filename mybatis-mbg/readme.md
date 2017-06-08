@@ -83,4 +83,4 @@ xml.mapper.package=com.mybatis.mapper
 
 通过点击`Maven Project`窗口中的
 
-![mark](./src/resources/img/maven_run.png?raw=true)
+![mark](https://github.com/9527dong/demo/raw/master/mybatis-mbg/src/main/resources/img/maven_run.png)
