@@ -38,9 +38,9 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table schema="mybatis" tableName="tbl_employee" domainObjectName="Employee">
+        <table tableName="user" domainObjectName="User">
             <property name="useActualColumnNames" value="true"/>
-            <generatedKey column="ID" sqlStatement="MySql" identity="true"/>
+            <!--<generatedKey column="ID" sqlStatement="MySql" identity="true"/>-->
         </table>
 
     </context>
