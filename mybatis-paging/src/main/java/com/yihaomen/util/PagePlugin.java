@@ -33,7 +33,7 @@ import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.type.TypeHandler;
 import org.apache.ibatis.type.TypeHandlerRegistry;
 
-@Intercepts({ @Signature(type = StatementHandler.class, method = "prepare", args = { Connection.class }) })
+@Intercepts({ @Signature(type = StatementHandler.class, method = "prepare", args = { Connection.class, Integer.class }) })
 public class PagePlugin implements Interceptor {
 
     private static String dialect = "";
@@ -187,8 +187,8 @@ public class PagePlugin implements Interceptor {
     }
 
     public Object plugin(Object arg0) {
-        // TODO Auto-generated method stub
-        return Plugin.wrap(arg0, this);
+        Object wrap = Plugin.wrap(arg0, this);
+        return wrap;
     }
 
     public void setProperties(Properties p) {
@@ -197,7 +197,6 @@ public class PagePlugin implements Interceptor {
             try {
                 throw new PropertyException("dialect property is not found!");
             } catch (PropertyException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }
@@ -206,7 +205,6 @@ public class PagePlugin implements Interceptor {
             try {
                 throw new PropertyException("pageSqlId property is not found!");
             } catch (PropertyException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }
