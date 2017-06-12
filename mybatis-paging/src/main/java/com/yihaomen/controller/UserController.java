@@ -86,9 +86,4 @@ public class UserController {
 		return mav;
 	}
 	
-
-	public static void main(String[] args) {
-		
-	}
-	
 }
