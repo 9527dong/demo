@@ -29,6 +29,9 @@ package com.http;
 import org.apache.http.conn.HttpClientConnectionManager;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 
+/**
+ * httpclient定期关闭无效链接
+ */
 public class ClientEvictExpiredConnections {
 
     public static void main(String[] args) throws Exception {

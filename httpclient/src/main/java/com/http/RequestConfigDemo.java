@@ -7,6 +7,9 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
+/**
+ * httpclient设置请求配置参数
+ */
 public class RequestConfigDemo {
 
     public static void main(String[] args) throws Exception {

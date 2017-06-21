@@ -8,6 +8,9 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.util.EntityUtils;
 
+/**
+ * 使用httpClient连接管理来创建httpclient对象
+ */
 public class HttpConnectManager {
 
     public static void main(String[] args) throws Exception {
