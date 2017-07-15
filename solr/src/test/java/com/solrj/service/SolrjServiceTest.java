@@ -49,7 +49,7 @@ public class SolrjServiceTest {
 
     @Test
     public void testSearch() throws Exception {
-        List<Foo> foos = this.solrjService.search("linux", 1, 10);
+        List<Foo> foos = this.solrjService.search("轻量", 1, 10);
         for (Foo foo : foos) {
             System.out.println(foo);
         }
