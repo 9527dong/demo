@@ -61,7 +61,7 @@ public class SimpleCronExample {
 
         // 定义触发器，每2秒执行一次
         Trigger trigger = newTrigger().withIdentity("trigger1", "group1")
-                .withSchedule(cronSchedule("0 0/1 * * * ?")).build();
+                .withSchedule(cronSchedule("0/5 * * * * ?")).build();
 
         // 将job注册到调度器
         sched.scheduleJob(job, trigger);
