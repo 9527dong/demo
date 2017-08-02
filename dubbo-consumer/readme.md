@@ -4,8 +4,8 @@
 本模块为dubbo的客户端模块，通过`userServiceTest.testQueryAll()`方法来调用服务端的接口。
 
 > **注意：**
-1. 在调用测试方法前，需要先将`dubbo-server-api`模块安装到本地仓库。
-2. 在调用测试方法前，需要先启动`dubbo-server`模块。
+>1. 在调用测试方法前，需要先将`dubbo-server-api`模块安装到本地仓库。
+>2. 在调用测试方法前，需要先启动`dubbo-server`模块。
 
 核心配置文件为`dubbo/dubbo-consumer.xml`。
 
