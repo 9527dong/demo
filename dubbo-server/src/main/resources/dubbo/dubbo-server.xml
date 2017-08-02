@@ -8,7 +8,7 @@
 	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
     <!-- 1. 提供方应用信息，用于计算依赖关系 -->
-    <dubbo:application name="dubbo-b-server" />
+    <dubbo:application name="dubbo-server" />
 
     <!-- 2. 这里使用的注册中心是zookeeper: 可以向注册中心注册服务-->
     <dubbo:registry address="zookeeper://10.100.137.194:2181" client="zkclient"/>
