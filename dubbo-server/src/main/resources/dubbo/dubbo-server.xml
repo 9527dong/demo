@@ -7,13 +7,22 @@
 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
 	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-    <!-- 提供方应用信息，用于计算依赖关系 -->
-    <dubbo:application name="dubbo-a-consumer" />
+    <!-- 1. 提供方应用信息，用于计算依赖关系 -->
+    <dubbo:application name="dubbo-b-server" />
 
-    <!-- 这里使用的注册中心是zookeeper -->
-    <dubbo:registry address="zookeeper://127.0.0.1:2181" client="zkclient"/>
+    <!-- 2. 这里使用的注册中心是zookeeper: 可以向注册中心注册服务-->
+    <dubbo:registry address="zookeeper://10.100.137.194:2181" client="zkclient"/>
 
-    <!-- 从注册中心中查找服务 -->
-    <dubbo:reference id="userService" interface="com.dubbo.service.UserService"/>
+    <!-- 3. 用dubbo协议在20880端口暴露服务 -->
+    <dubbo:protocol name="dubbo" port="20880" />
+
+    <!-- 将该接口暴露到dubbo中 -->
+    <dubbo:service interface="com.dubbo.service.UserService" ref="userServiceImpl" />
+
+    <!-- 将具体的实现类加入到Spring容器中 -->
+    <bean id="userServiceImpl" class="com.dubbo.service.impl.UserServiceImpl" />
+
+    <!-- registry: 是指在注册中心中自动查找监控服务 -->
+    <dubbo:monitor protocol="registry"/>
 
 </beans>

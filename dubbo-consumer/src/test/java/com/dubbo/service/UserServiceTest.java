@@ -1,15 +1,12 @@
 package com.dubbo.service;
 
-import static org.junit.Assert.*;
-
-import java.util.List;
-
+import com.dubbo.pojo.User;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.dubbo.pojo.User;
+import java.util.List;
 
 public class UserServiceTest {
 

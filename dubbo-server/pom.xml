@@ -5,11 +5,16 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.dubbo</groupId>
-    <artifactId>dubbo-b</artifactId>
+    <artifactId>dubbo-server</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
     <dependencies>
+        <dependency>
+            <groupId>com.demo</groupId>
+            <artifactId>dubbo-server-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
         <!-- dubbo采用spring配置方式，所以需要导入spring容器依赖 -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -37,7 +42,7 @@
         <dependency>
             <groupId>org.apache.zookeeper</groupId>
             <artifactId>zookeeper</artifactId>
-            <version>3.3.3</version>
+            <version>3.3.6</version>
         </dependency>
 
         <dependency>
