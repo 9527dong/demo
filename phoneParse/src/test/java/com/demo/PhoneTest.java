@@ -12,5 +12,8 @@ public class PhoneTest {
         File file = new File("phone");
         FileProcessor fileProcessor = new FileProcessor();
         System.out.println(phoneProcess.isLianTong("18613208491"));
+        for (int i = 0; i < 100; i++) {
+            
+        }
     }
 }
