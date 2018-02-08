@@ -1,11 +1,21 @@
 package com.dong.bean;
 
+/**
+ * 手机号信息
+ */
 public class PhoneInfo {
+    //手机号前7位
     private String mts;
+    //归属地
     private String province;
+    //运营商名称
     private String catName;
+    //手机号
     private String telString;
     private String areaVid;
+    private String ispVid;
+    //归属地
+    private String carrier;
 
     public String getTelString() {
         return telString;
@@ -15,8 +25,7 @@ public class PhoneInfo {
         this.telString = telString;
     }
 
-    private String ispVid;
-    private String carrier;
+
 
     public PhoneInfo(String mts, String province, String catName, String telString, String areaVid, String ispVid, String carrier) {
         this.mts = mts;
