@@ -5,7 +5,10 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.util.ConnectionUtil;
 
-//订阅模式
+/**
+ * 生产者
+ * 注意：消息发送到没有队列绑定的交换机时，消息将丢失，因为，交换机没有存储消息的能力，消息只能存在在队列中。
+ */
 public class Send {
 
     private final static String EXCHANGE_NAME = "test_exchange_fanout";
@@ -20,6 +23,7 @@ public class Send {
 
         // 消息内容
         String message = "商品已经被更新，id=1001";
+        //向交换机中发送消息。
         channel.basicPublish(EXCHANGE_NAME, "", null, message.getBytes());
         System.out.println(" 后台系统： '" + message + "'");
 

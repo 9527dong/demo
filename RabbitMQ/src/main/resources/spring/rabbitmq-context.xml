@@ -5,17 +5,17 @@
 	http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
 
-	<!-- 定义RabbitMQ的连接工厂 -->
+	<!-- 1. 定义RabbitMQ的连接工厂 -->
 	<rabbit:connection-factory id="connectionFactory"
 		host="127.0.0.1" port="5672" username="taotao" password="taotao"
 		virtual-host="/taotao" />
 
-	<!-- 定义Rabbit模板，指定连接工厂以及定义exchange -->
+	<!-- 2. 定义Rabbit模板，指定连接工厂以及定义exchange -->
 	<rabbit:template id="amqpTemplate" connection-factory="connectionFactory" exchange="fanoutExchange" />
 	<!-- <rabbit:template id="amqpTemplate" connection-factory="connectionFactory"
 		exchange="fanoutExchange" routing-key="foo.bar" /> -->
 
-	<!-- MQ的管理，包括队列、交换器等 -->
+	<!-- 3. MQ的管理，包括队列、交换器等 -->
 	<rabbit:admin connection-factory="connectionFactory" />
 
 	<!-- 定义队列，自动声明 -->
@@ -34,7 +34,7 @@
 		</rabbit:bindings>
 	</rabbit:topic-exchange> -->
 
-	<!-- 队列监听 -->
+	<!-- 4. 队列监听 -->
 	<rabbit:listener-container connection-factory="connectionFactory">
 		<rabbit:listener ref="foo" method="listen" queue-names="myQueue" />
 	</rabbit:listener-container>
