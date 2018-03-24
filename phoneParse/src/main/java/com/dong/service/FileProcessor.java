@@ -11,7 +11,7 @@ public class FileProcessor {
 
     public List getLineList(File file) throws IOException {
 
-        final List<String> lines = FileUtils.readLines(new File(""), Charsets.UTF_8);
+        final List<String> lines = FileUtils.readLines(file, Charsets.UTF_8);
         return lines;
     }
 }
