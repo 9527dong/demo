@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+    http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+    <!-- 使用ContextLoaderListener配置时，需要告诉它Spring配置文件的未知-->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:applicationContext.xml</param-value>
+    </context-param>
+
+    <!-- SpringMVC的前端控制器 -->
+    <!-- 当 DispatcherServlet 载入后，会从Spring-servlet.xml文件中加载Spring应用的上下文-->
+    <!-- DispatcherServlet 主要用来加载包含Web组件的bean，如控制器、视图解析器 以及 处理器映射-->
+    <servlet>
+        <servlet-name>Springmvc</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:Spring-servlet.xml</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Springmvc</servlet-name>
+        <url-pattern>*.htm</url-pattern>
+    </servlet-mapping>
+
+    <!--配置上下文载入器-->
+    <!-- 上下文载入器载入除DispatcherServlet加载的其它应用中的bean。这些bean通常是驱动应用后端的中间层和数据层组件 -->
+    <!-- 最常用的上下文载入器是一个Servlet监听器，其名称为ContextLoaderListener-->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+</web-app>
