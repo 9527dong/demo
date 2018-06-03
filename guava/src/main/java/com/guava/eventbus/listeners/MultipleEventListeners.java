@@ -26,6 +26,10 @@ public class MultipleEventListeners {
         }
     }
 
+    /**
+     *
+     * @param event 此处数据类型必须为Integer，不能是int
+     */
     @Subscribe
     public void intTask(final Integer event){
         if (LOGGER.isInfoEnabled()){
