@@ -11,6 +11,7 @@ import com.guava.eventbus.listeners.ExceptionListener;
  **/
 public class DeadEventBusExample {
     public static void main(String[] args) {
+        //重写EventBus的toString方法，使eventBus的名称为DEAD-EVENT-BUS
         final EventBus eventBus = new EventBus(){
             @Override public String toString() {
                 return "DEAD-EVENT-BUS";
@@ -20,6 +21,8 @@ public class DeadEventBusExample {
         eventBus.register(deadEventListener);
         eventBus.post("DeadEventListener event");
         eventBus.post("DeadEventListener event");
+
+        //取消注册在eventBus上的Listener方法
         eventBus.unregister(deadEventListener);
         eventBus.post("DeadEventListener event");
         eventBus.post("DeadEventListener event");
