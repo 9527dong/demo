@@ -18,7 +18,10 @@
 
         </plugins>
     </build>
-    <packaging>jar</packaging>
+    <modules>
+        <module>aspectj</module>
+    </modules>
+    <packaging>pom</packaging>
 
     <name>design-pattern</name>
     <url>http://maven.apache.org</url>
