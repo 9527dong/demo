@@ -1,6 +1,8 @@
 package com.yihaomen.test;
 
 import java.io.Reader;
+import java.math.BigDecimal;
+import java.util.List;
 
 import com.yihaomen.mybatis.inter.IUserOperation;
 import org.apache.ibatis.io.Resources;
@@ -21,7 +23,7 @@ public class mybatisTest {
     @BeforeClass
     public static void init(){
         try{
-            // 、根据 全局配置文件， 利用SqlSessionFactoryBuilder 创建SqlSessionFactory
+            // 1.根据 全局配置文件， 利用SqlSessionFactoryBuilder 创建SqlSessionFactory
             reader    = Resources.getResourceAsReader("Configuration.xml");
             sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
         }catch(Exception e){
@@ -40,7 +42,9 @@ public class mybatisTest {
         //使用 SqlSessionFactory 获取 sqlSession 对象。一 个 SqlSession 对象代表和数据库的一次会话
         SqlSession session = sqlSessionFactory.openSession();
         try {
-            User user = (User) session.selectOne("helloworld.selectUserByID", 1);
+            User user = session.selectOne("helloworld.selectUserByID", 1);
+            List users = session.selectList("helloworld.selectUserByID", 1);
+            System.out.println(users);
             assertEquals("shanghai,pudong", user.getUserAddress());
             assertEquals("summer", user.getUserName());
         } finally {
@@ -63,5 +67,15 @@ public class mybatisTest {
         } finally {
             session.close();
         }
+    }
+
+    public static void main(String[] args) {
+        String externalSkUId = "23558462_2019-03-17_1";
+        String proDuctNo = externalSkUId.split("_")[0];
+        String date = externalSkUId.split("_")[1];
+        String period = externalSkUId.split("_")[2];
+
+        BigDecimal bigDecimal = new BigDecimal(22.22);
+        System.out.println(Double.valueOf(bigDecimal.doubleValue()*100).intValue());
     }
 }
