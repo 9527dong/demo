@@ -14,7 +14,7 @@
     <properties>
         <javax.servlet-api>3.0.1</javax.servlet-api>
         <javax.servlet.jsp-api>2.2.1</javax.servlet.jsp-api>
-        <mybatis.version>3.4.4</mybatis.version>
+        <mybatis.version>3.5.6</mybatis.version>
         <h2.version>1.4.195</h2.version>
         <junit.version>4.12</junit.version>
         <commons-dbcp2>2.1.1</commons-dbcp2>
